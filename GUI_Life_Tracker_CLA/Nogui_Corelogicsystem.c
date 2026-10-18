@@ -1,12 +1,5 @@
 /*
  * LIFE RPG - Level Up Your Real Life
- * ----------------------------------
- * A console RPG where real-life habits become weekly quests.
- * Completing quests earns XP, raises stats, and builds discipline.
- * Uses only standard C libraries.
- *
- * Compile: gcc lifeRpg.c -o lifeRpg
- * Run:     ./lifeRpg
  */
 
 #include <stdio.h>
