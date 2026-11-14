@@ -1,1 +1,41 @@
+/* --- CONSTANTS --- */
+#define MAX_ACCOUNTS 500
+#define MAX_QUESTS 50
+#define MAX_LOGS 200
+#define MAX_LEN 128
+
+/* --- GLOBAL ARRAYS (Flat Structure) --- */
+// Accounts
+char accountIds[MAX_ACCOUNTS][16];
+char accountNames[MAX_ACCOUNTS][64];
+int accountCount = 0;
+
+// Current Logged-In Player
+char curId[16];
+char curName[64];
+int curLevel = 1;
+int curXp = 0;
+int curGold = 0;
+int curClass = 0; // 0: Scholar, 1: Athlete, 2: Artist
+int curStats[5] = {10, 10, 10, 10, 10}; // 0:Intellect, 1:Stamina, 2:Discipline, 3:Social, 4:Creativity
+int curDiscipline = 0;
+long lastLoginTime = 0;
+char dailyFortune[128] = "Normal Day";
+
+// Quests
+int questCount = 0;
+char questName[MAX_QUESTS][64];
+int questDay[MAX_QUESTS];
+int questStat[MAX_QUESTS];
+int questReward[MAX_QUESTS];
+int questDone[MAX_QUESTS];
+
+// Activity Logs
+int logCount = 0;
+char logText[MAX_LOGS][MAX_LEN];
+
+// Labels
+const char *days[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+const char *statNames[5] = {"Intellectual", "Stamina", "Discipline", "Social Skills", "Creativity"};
+const char *classNames[3] = {"Scholar (+XP to Intellect)", "Athlete (+XP to Stamina)", "Artist (+XP to Creativity)"};
 
