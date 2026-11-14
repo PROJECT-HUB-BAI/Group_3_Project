@@ -1,0 +1,19 @@
+/* --- MAIN MENU --- */
+int main(void) {
+    srand(time(NULL));
+    loadAccounts();
+
+    int choice;
+    do {
+        printf("\n==================================\n");
+        printf("       LIFE RPG - MAIN MENU       \n");
+        printf("==================================\n");
+        printf("1. Login to Account\n");
+        printf("2. Create New Account\n");
+        printf("3. Exit\n");
+        printf("Choose option: ");
+        scanf("%d", &choice); getchar();
+
+        if (choice == 1) loginPlayer();
+        else if (choice == 2) createAccount();
+    } while (choice != 3);
