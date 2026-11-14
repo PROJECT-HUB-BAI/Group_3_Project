@@ -1,1 +1,26 @@
+/* --- HELPER FUNCTIONS --- */
+void trimString(char *str) {
+    int len = strlen(str);
+    while (len > 0 && (str[len - 1] == '\n' || str[len - 1] == '\r' || str[len - 1] == ' ')) {
+        str[len - 1] = '\0';
+        len--;
+    }
+}
 
+void pressEnter(void) {
+    char buf[10];
+    printf("\nPress Enter to continue...");
+    fgets(buf, sizeof(buf), stdin);
+}
+
+void addLog(const char *msg) {
+    if (logCount < MAX_LOGS) {
+        snprintf(logText[logCount], MAX_LEN, "%s", msg);
+        logCount++;
+    } else {
+        for (int i = 0; i < MAX_LOGS - 1; i++) {
+            strcpy(logText[i], logText[i + 1]);
+        }
+        snprintf(logText[MAX_LOGS - 1], MAX_LEN, "%s", msg);
+    }
+}
