@@ -5,7 +5,7 @@
 #include <ctype.h>
 
 
-/* --- CONSTANTS --- */
+//constants
 #define MAX_ACCOUNTS 500
 #define MAX_QUESTS 50
 #define MAX_LOGS 200
