@@ -24,3 +24,19 @@ void addLog(const char *msg) {
         snprintf(logText[MAX_LOGS - 1], MAX_LEN, "%s", msg);
     }
 }
+void refreshDailyStreak(void) {
+    long currentDay = time(NULL) / 86400L;
+
+    if (lastStreakDay < 0) {
+        dailyStreak = 1;
+    } else if (currentDay == lastStreakDay) {
+        return;
+    } else if (currentDay == lastStreakDay + 1) {
+        dailyStreak++;
+        addLog("Daily streak increased.");
+    } else {
+        dailyStreak = 1;
+        addLog("Daily streak reset.");
+    }
+
+    lastStreakDay = currentDay
