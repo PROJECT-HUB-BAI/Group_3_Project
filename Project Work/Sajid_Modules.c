@@ -17,6 +17,7 @@ int main()
     int pin_matches;
     int xp = 0;
     int level = 1;
+    int stats[5] = {10, 10, 10, 10, 10};
     int earned_xp;
 
     while (running == 1)
@@ -135,7 +136,7 @@ int main()
                 if (pin_matches == 1)
                 {
                     printf("Developer mode: %s, level %d, XP %d.\n", saved_name, level, xp);
-                    printf("1. Add 500 XP\n2. Back\nChoose: ");
+                    printf("1. Add 500 XP\n2. Max stats\n3. Back\nChoose: ");
                     scanf("%d", &choice);
                     if (choice == 1)
                     {
@@ -148,6 +149,14 @@ int main()
                         printf("Testing XP added. Level is now %d.\n", level);
                     }
                     else if (choice == 2)
+                    {
+                        for (i = 0; i < 5; i++)
+                        {
+                            stats[i] = 100;
+                        }
+                        printf("Developer mode set the five stats to 100.\n");
+                    }
+                    else if (choice == 3)
                     {
                         printf("Back to the player hub.\n");
                     }
