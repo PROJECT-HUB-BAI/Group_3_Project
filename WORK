@@ -1,0 +1,266 @@
+#include <stdio.h>
+
+int main()
+{
+char account_names[100][64];
+char account_pins[100][16];
+int account_classes[100];
+
+char current_name[64] = "";
+char current_pin[16] = "";
+int current_stats[5] = {10, 10, 10, 10, 10};
+
+int account_count = 0, next_account_number = 1000;
+int current_class = 0, current_level = 1, current_xp = 0, current_gold = 0;
+int menu_state = 0, choice, selected_account, loop_index;
+int xp_amount, stat_index, is_running = 1, is_match, number_value;
+char input_buffer[64], pin_buffer[16];
+char dev_pin[8] = {'K', 'S', 'M', '-', '3', '2', '1', 0};
+
+while (is_running)
+{
+    switch (menu_state)
+    {
+        case 0:
+            printf("\nmain menu\n");
+            printf("1 login\n2 create\n3 exit\n");
+            printf("pick: ");
+            scanf("%d", &choice);
+
+            switch (choice)
+            {
+                case 1:
+                    if (account_count == 0) { printf("no accounts\n"); break; }
+
+                    printf("\nplayers\n");
+                    for (loop_index = 0; loop_index < account_count; loop_index++)
+                        printf("%d %s\n", loop_index + 1, account_names[loop_index]);
+
+                    printf("pick: ");
+                    scanf("%d", &selected_account);
+                    selected_account--;
+
+                    if (selected_account < 0 || selected_account >= account_count)
+                    {
+                        printf("bad pick\n");
+                        break;
+                    }
+
+                    printf("enter pin: ");
+                    scanf("%15s", pin_buffer);
+
+                    is_match = 1;
+                    loop_index = 0;
+                    while (account_pins[selected_account][loop_index] != 0 || pin_buffer[loop_index] != 0)
+                    {
+                        if (account_pins[selected_account][loop_index] != pin_buffer[loop_index])
+                        {
+                            is_match = 0;
+                            break;
+                        }
+                        loop_index++;
+                    }
+
+                    if (is_match == 0)
+                    {
+                        printf("wrong pin\n");
+                        break;
+                    }
+
+                    loop_index = 0;
+                    while (account_names[selected_account][loop_index] != 0)
+                    {
+                        current_name[loop_index] = account_names[selected_account][loop_index];
+                        loop_index++;
+                    }
+                    current_name[loop_index] = 0;
+
+                    loop_index = 0;
+                    while (account_pins[selected_account][loop_index] != 0)
+                    {
+                        current_pin[loop_index] = account_pins[selected_account][loop_index];
+                        loop_index++;
+                    }
+                    current_pin[loop_index] = 0;
+
+                    current_class = account_classes[selected_account];
+                    current_level = 1;
+                    current_xp = 0;
+                    current_gold = 0;
+                    for (loop_index = 0; loop_index < 5; loop_index++) current_stats[loop_index] = 10;
+
+                    menu_state = 1;
+                    printf("welcome %s\n", current_name);
+                    break;
+
+                case 2:
+                    if (account_count >= 100) { printf("account list full\n"); break; }
+
+                    printf("enter name: ");
+                    scanf("%63s", input_buffer);
+
+                    printf("class: 0 scholar 1 athlete 2 artist\npick: ");
+                    scanf("%d", &current_class);
+
+                    if (current_class < 0 || current_class > 2) current_class = 0;
+
+                    loop_index = 0;
+                    while (input_buffer[loop_index] != 0)
+                    {
+                        current_name[loop_index] = input_buffer[loop_index];
+                        loop_index++;
+                    }
+                    current_name[loop_index] = 0;
+
+                    current_pin[0] = 'K'; current_pin[1] = 'S';
+                    current_pin[2] = 'M'; current_pin[3] = '-';
+
+                    number_value = next_account_number;
+                    current_pin[7] = '0' + (number_value % 10);
+                    number_value /= 10;
+                    current_pin[6] = '0' + (number_value % 10);
+                    number_value /= 10;
+                    current_pin[5] = '0' + (number_value % 10);
+                    number_value /= 10;
+                    current_pin[4] = '0' + (number_value % 10);
+                    current_pin[8] = 0;
+
+                    next_account_number++;
+
+                    loop_index = 0;
+                    while (current_name[loop_index] != 0)
+                    {
+                        account_names[account_count][loop_index] = current_name[loop_index];
+                        loop_index++;
+                    }
+                    account_names[account_count][loop_index] = 0;
+
+                    loop_index = 0;
+                    while (current_pin[loop_index] != 0)
+                    {
+                        account_pins[account_count][loop_index] = current_pin[loop_index];
+                        loop_index++;
+                    }
+                    account_pins[account_count][loop_index] = 0;
+
+                    account_classes[account_count] = current_class;
+                    account_count++;
+
+                    current_level = 1; current_xp = 0; current_gold = 0;
+                    for (loop_index = 0; loop_index < 5; loop_index++)
+                    {
+                        current_stats[loop_index] = 10;
+                    }
+
+                    printf("account made\nyour pin: %s\n", current_pin);
+                    menu_state = 1;
+                    break;
+
+                case 3:
+                    is_running = 0;
+                    break;
+            }
+            break;
+
+        case 1:
+            printf("\n%s hub\n", current_name);
+            printf("1 profile\n");
+            printf("2 dev mode\n3 logout\n");
+            printf("pick: ");
+            scanf("%d", &choice);
+
+            switch (choice)
+            {
+                case 1:
+                    printf("\nprofile\nname: %s\n", current_name);
+                    printf("class: %d\n", current_class);
+                    printf("level: %d, xp: %d, gold: %d\n", current_level, current_xp, current_gold);
+                    printf("stats: ");
+                    for (loop_index = 0; loop_index < 5; loop_index++)
+                    {
+                        printf("%d ", current_stats[loop_index]);
+                    }
+                    printf("\n");
+                    break;
+
+                case 2:
+                    menu_state = 2;
+                    break;
+
+                case 3:
+                    printf("logged out\n");
+                    menu_state = 0;
+                    break;
+            }
+            break;
+
+        case 2:
+            printf("\ndev mode\nenter pin: ");
+            scanf("%15s", pin_buffer);
+
+            is_match = 1;
+            loop_index = 0;
+            while (dev_pin[loop_index] != 0 || pin_buffer[loop_index] != 0)
+            {
+                if (dev_pin[loop_index] != pin_buffer[loop_index])
+                {
+                    is_match = 0;
+                    break;
+                }
+                loop_index++;
+            }
+
+            if (!is_match)
+            {
+                printf("wrong pin\n");
+                menu_state = 1;
+                break;
+            }
+
+            printf("1 add 500 xp\n2 max stats\n3 back\npick: ");
+            scanf("%d", &choice);
+
+            switch (choice)
+            {
+                case 1:
+                    xp_amount = 500;
+                    stat_index = 0;
+
+                    if ((current_class == 0 && stat_index == 0) ||
+                        (current_class == 1 && stat_index == 1) ||
+                        (current_class == 2 && stat_index == 4))
+                    {
+                        xp_amount += xp_amount / 5;
+                        printf("class bonus\n");
+                    }
+
+                    current_xp += xp_amount;
+                    current_gold += 250;
+                    printf("xp +%d, gold +250\n", xp_amount);
+
+                    while (current_xp >= current_level * 100)
+                    {
+                        current_xp -= current_level * 100;
+                        current_level++;
+                        printf("level up: %d\n", current_level);
+                    }
+                    break;
+
+                case 2:
+                    for (loop_index = 0; loop_index < 5; loop_index++)
+                    {
+                        current_stats[loop_index] = 100;
+                    }
+                    printf("stats maxed\n");
+                    break;
+
+                case 3:
+                    menu_state = 1;
+                    break;
+            }
+            break;
+    }
+}
+
+return 0;
+}
