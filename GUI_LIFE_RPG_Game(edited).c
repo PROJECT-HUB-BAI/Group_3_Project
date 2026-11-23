@@ -1,3 +1,4 @@
+// Mamoon Modules Declaration and Defination of variables and constants.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
