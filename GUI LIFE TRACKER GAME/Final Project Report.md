@@ -3,15 +3,16 @@
 ### A Personal Productivity Game in C with Raylib and Console Versions
 
 **Submitted By:**
-- Mamoon
-- Khadija
-- Sajid
+- Mamoon 26k-0003
+- Khadija 26k-0013
+- Sajid 26k-0027
 
-**Course:** Programming Fundamentals  
+**Course:** Programming Fundamentals Lab
 **Programming Language:** C  
 **Project Type:** Raylib graphical game with a separate console version  
 **Department:** Artificial Intelligence  
-**Institution:** FAST – NUCES  
+**Institution:** FAST – NUCES 
+**Semester 2026 Fall
 
 ---
 
