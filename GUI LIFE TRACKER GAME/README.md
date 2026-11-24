@@ -1,4 +1,4 @@
-# Life RPG v1
+# Life RPG 
 
 ## Run the Raylib game
 
