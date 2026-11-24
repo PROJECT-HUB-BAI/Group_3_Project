@@ -10,13 +10,13 @@
 #define MAX_LOGS 200
 #define MAX_LEN 128
 
-// global arrays used to store game data in a flat structre
-// account sterage.
+// global arrays used to store game data in a flat structure
+// account storage
 char accountIds[MAX_ACCOUNTS][16];
 char accountNames[MAX_ACCOUNTS][64];
 int accountCount = 0;
 
-// current logged in player details.
+// current logged in player details
 char curId[16];
 char curName[64];
 int curLevel = 1;
@@ -30,7 +30,7 @@ long lastStreakDay = -1;
 long lastLoginTime = 0;
 char dailyFortune[128] = "Normal Day";
 
-// quest storage.
+// quest storage
 int questCount = 0;
 char questName[MAX_QUESTS][64];
 int questDay[MAX_QUESTS];
@@ -38,7 +38,7 @@ int questStat[MAX_QUESTS];
 int questReward[MAX_QUESTS];
 int questDone[MAX_QUESTS];
 
-// activity log storag
+// activity log storage
 int logCount = 0;
 char logText[MAX_LOGS][MAX_LEN];
 
