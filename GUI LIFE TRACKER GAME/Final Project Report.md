@@ -4,8 +4,8 @@
 
 **Submitted By:**
 - Mamoon 26k-0003
-- Khadija 26k-0013
-- Sajid 26k-0027
+- Sajid 26k-0013
+- Khadija 26k-0027
 
 **Course:** Programming Fundamentals Lab
 **Programming Language:** C  
