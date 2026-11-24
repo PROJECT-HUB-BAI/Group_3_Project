@@ -1,17 +1,17 @@
-                  // Mamoon Modules Declaration and Defination of variables and constants.
+                  // Mamoon Modules Declaration and Defination of variables and constants
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-// constants used across the program.
+// constants used across the program
 #define MAX_ACCOUNTS 500
 #define MAX_QUESTS 50
 #define MAX_LOGS 200
 #define MAX_LEN 128
 
-// global arrays used to store game data in a flat structure.
-// account storage.
+// global arrays used to store game data in a flat structre
+// account sterage.
 char accountIds[MAX_ACCOUNTS][16];
 char accountNames[MAX_ACCOUNTS][64];
 int accountCount = 0;
@@ -22,8 +22,8 @@ char curName[64];
 int curLevel = 1;
 int curXp = 0;
 int curGold = 0;
-int curClass = 0; // class values: 0 scholar, 1 athlete, 2 artist.
-int curStats[5] = {10, 10, 10, 10, 10}; // s tat values: 0 intellect, 1 stamina, 2 discipline, 3 social, 4 creativity.
+int curClass = 0; // class values: 0 scholar, 1 athlete, 2 artist
+int curStats[5] = {10, 10, 10, 10, 10}; // s tat values: 0 intellect, 1 stamina, 2 discipline, 3 social, 4 creativity
 int curDiscipline = 0;
 int dailyStreak = 1;
 long lastStreakDay = -1;
@@ -38,17 +38,17 @@ int questStat[MAX_QUESTS];
 int questReward[MAX_QUESTS];
 int questDone[MAX_QUESTS];
 
-// activity log storage.
+// activity log storag
 int logCount = 0;
 char logText[MAX_LOGS][MAX_LEN];
 
-// text labels for days, stats, and classes.
+// text labels for days, stats, and classes
 const char *days[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 const char *statNames[5] = {"Intellectual", "Stamina", "Discipline", "Social Skills", "Creativity"};
 const char *classNames[3] = {"Scholar (+XP to Intellect)", "Athlete (+XP to Stamina)", "Artist (+XP to Creativity)"};
 
 
-                       // mamoon module - helper functions.
+                       // mamoon module - helper functions
 void trimString(char *str)
 {
     int len = strlen(str);
