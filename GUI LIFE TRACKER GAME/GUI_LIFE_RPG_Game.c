@@ -1,4 +1,4 @@
-// Mamoon Modules Declaration and Defination of variables and constants.
+                  // Mamoon Modules Declaration and Defination of variables and constants.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,7 +23,7 @@ int curLevel = 1;
 int curXp = 0;
 int curGold = 0;
 int curClass = 0; // class values: 0 scholar, 1 athlete, 2 artist.
-int curStats[5] = {10, 10, 10, 10, 10}; // stat values: 0 intellect, 1 stamina, 2 discipline, 3 social, 4 creativity.
+int curStats[5] = {10, 10, 10, 10, 10}; // s tat values: 0 intellect, 1 stamina, 2 discipline, 3 social, 4 creativity.
 int curDiscipline = 0;
 int dailyStreak = 1;
 long lastStreakDay = -1;
@@ -48,7 +48,7 @@ const char *statNames[5] = {"Intellectual", "Stamina", "Discipline", "Social Ski
 const char *classNames[3] = {"Scholar (+XP to Intellect)", "Athlete (+XP to Stamina)", "Artist (+XP to Creativity)"};
 
 
-// mamoon module - helper functions.
+                       // mamoon module - helper functions.
 void trimString(char *str)
 {
     int len = strlen(str);
@@ -116,7 +116,7 @@ void refreshDailyStreak(void)
 }
 
 
-// khadija module - file saving & file loading.
+                      // khadija module - file saving & file loading.
 void loadAccounts(void)
 {
     FILE *f = fopen("accounts.txt", "r");
@@ -305,7 +305,7 @@ void loadPlayer(const char *id)
 }
 
 
-// sajid module - add xp.
+                                 // sajid module - add xp.
 void addXp(int amount, int statIndex)
 {
     // class passive check, matching class to stat gives a small bonus xp.
@@ -346,7 +346,7 @@ void addXp(int amount, int statIndex)
 }
 
 
-// khadija module - player profile & title.
+                     // khadija module - player profile & title.
 void printTitle(void)
 {
     int highestStatIdx = 0;
@@ -409,7 +409,7 @@ void viewProfile(void)
 }
 
 
-// khadija module - quest management & completion.
+                         // khadija module - quest management & completion.
 void printQuestBoard(void)
 {
     printf("\n---===! WEEKLY QUEST BOARD !===---\n");
@@ -562,7 +562,7 @@ void questMenu(void)
 
 
 
-// khadija module - reward shop.
+                     // khadija module - reward shop.
 void rewardShop(void)
 {
     char items[3][32] = {"1 Hour Free Time", "Favorite Snack", "Day Off / Sleep In"};
@@ -600,7 +600,7 @@ void rewardShop(void)
 
 
 
-// sajid module - developer mode.
+                         // sajid module - developer mode.
 void developerMode(void)
 {
     char pin[16];
@@ -646,7 +646,7 @@ void developerMode(void)
 
 
 
-// sajid module - player hub.
+                  // sajid module - player hub.
 void playerHub(void)
 {
     int choice;
@@ -661,6 +661,8 @@ void playerHub(void)
         printf("Choose option: ");
         scanf("%d", &choice); getchar();
 
+
+    
         if (choice == 1) viewProfile();
         else if (choice == 2) questMenu();
         else if (choice == 3) rewardShop();
@@ -675,7 +677,7 @@ void playerHub(void)
 
 
 
-// sajid module - login player.
+                    // sajid module - login player.
 void loginPlayer(void)
 {
     if (accountCount == 0)
@@ -715,7 +717,7 @@ void loginPlayer(void)
 
 
 
-// sajid module - create account.
+                    // sajid module - create account.
 void createAccount(void)
 {
     if (accountCount >= MAX_ACCOUNTS)
@@ -763,7 +765,7 @@ void createAccount(void)
 }
 
 
-// mamoon module - main menu.
+                   // mamoon module - main menu.
 int main(void)
 {
     srand(time(NULL));
@@ -772,7 +774,7 @@ int main(void)
     int choice;
     do
     {
-        printf("\n---===! LIFE RPG - MAIN MENU !===---\n");
+        printf("\n---===C<<< LIFE RPG - MAIN MENU >>>C===---\n");
         printf("1. Login to Account\n");
         printf("2. Create New Account\n");
         printf("3. Exit\n");
