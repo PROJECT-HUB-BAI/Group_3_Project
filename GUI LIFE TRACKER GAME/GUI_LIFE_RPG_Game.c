@@ -4,8 +4,6 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-
-
 // constants used across the program.
 #define MAX_ACCOUNTS 500
 #define MAX_QUESTS 50
